@@ -1,0 +1,40 @@
+{
+  "name": "custom-components-lib",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "build": "webpack --mode production",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MashaBogdanova/custom-components-lib.git"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/MashaBogdanova/custom-components-lib#readme",
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.5",
+    "@storybook/addon-essentials": "^8.6.3",
+    "@storybook/addon-interactions": "^8.6.3",
+    "@storybook/addon-onboarding": "^8.6.3",
+    "@storybook/addon-webpack5-compiler-swc": "^2.1.0",
+    "@storybook/blocks": "^8.6.3",
+    "@storybook/react": "^8.6.3",
+    "@storybook/react-webpack5": "^8.6.3",
+    "@storybook/test": "^8.6.3",
+    "@types/react": "^19.0.10",
+    "css-loader": "^7.1.2",
+    "sass": "^1.85.1",
+    "sass-loader": "^16.0.5",
+    "storybook": "^8.6.3",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.2",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
+  }
+}
