@@ -1,0 +1,87 @@
+@use '../../sass/abstract/constants' as constants;
+
+.button {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: constants.$padding;
+  overflow: hidden;
+
+  font-size: constants.$font-size;
+  font-weight: constants.$font-weight;
+  text-transform: uppercase;
+
+  background: transparent;
+  border: none;
+  border-radius: constants.$border-radius;
+  outline: none;
+  cursor: pointer;
+
+  transition: constants.$transition;
+
+  &:after {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: constants.$ripple-size;
+    height: constants.$ripple-size;
+
+    background: constants.$ripple-color;
+    opacity: 0;
+    border-radius: 50%;
+    pointer-events: none;
+
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  &.ripple:after {
+    animation: ripple 0.6s linear;
+  }
+
+  &.contained {
+    color: constants.$white;
+    background: constants.$primary-color;
+
+    &:hover {
+      background: constants.$primary-hover;
+    }
+  }
+
+  &.text {
+    color: constants.$text-color;
+
+    &:hover {
+      background: constants.$text-hover-bg;
+    }
+  }
+
+  &.outlined {
+    color: constants.$text-color;
+    border: 1px solid constants.$primary-outline;
+
+    &:hover {
+      background: constants.$outlined-hover-bg;
+    }
+  }
+
+  &.text:after,
+  &.outlined:after {
+    background: constants.$ripple-color-dark;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(constants.$ripple-scale);
+    opacity: 0;
+  }
+}
