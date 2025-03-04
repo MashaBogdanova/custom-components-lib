@@ -1,0 +1,10 @@
+.idea/
+src/
+__tests__/
+.storybook/
+webpack.config.js
+tsconfig.json
+eslint.config.js
+.prettierrc.json
+.gitignore
+npm-debug.log
