@@ -1,14 +1,15 @@
-import { Meta, StoryObj } from "@storybook/react";
-import Button from "./Button";
+import { Meta, StoryObj } from '@storybook/react';
+
+import Button from './Button';
 
 const meta: Meta<typeof Button> = {
-  title: "Components/Button",
+  title: 'Components/Button',
   component: Button,
   argTypes: {
     type: {
-      options: ["contained", "text", "outlined"],
+      options: ['contained', 'text', 'outlined'],
     },
-    onClick: { action: "clicked" },
+    onClick: { action: 'clicked' },
   },
 };
 
@@ -18,21 +19,21 @@ type Story = StoryObj<typeof Button>;
 
 export const Text: Story = {
   args: {
-    label: "Text Button",
-    type: "text",
+    label: 'Text Button',
+    type: 'text',
   },
 };
 
 export const Contained: Story = {
   args: {
-    label: "Contained Button",
-    type: "contained",
+    label: 'Contained Button',
+    type: 'contained',
   },
 };
 
 export const Outlined: Story = {
   args: {
-    label: "Outlined Button",
-    type: "outlined",
+    label: 'Outlined Button',
+    type: 'outlined',
   },
 };

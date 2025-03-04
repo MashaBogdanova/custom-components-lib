@@ -1,6 +1,7 @@
-import * as React from "react";
-import * as styles from "./Button.module.scss"
-import {useState} from "react";
+import * as React from 'react';
+import { useState } from 'react';
+
+import * as styles from './Button.module.scss';
 
 export interface ButtonProps {
   label: string;
@@ -8,10 +9,11 @@ export interface ButtonProps {
   onClick?: () => void;
 }
 
-const MyButton: React.FC<ButtonProps> = ({label, type, onClick}) => {
+const MyButton: React.FC<ButtonProps> = ({ label, type, onClick }) => {
   const [ripple, setRipple] = useState(false);
   const handleClick = (): void => {
     setRipple(true);
+
     if (onClick) onClick();
     setTimeout(() => setRipple(false), 600);
   };
