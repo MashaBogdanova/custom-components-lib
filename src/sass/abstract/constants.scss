@@ -36,9 +36,12 @@ $box-shadow-contained-default: 0px 2px 4px #00000019;
 $box-shadow-contained-hover: 0px 4px 8px #00000026;
 $box-shadow-contained-active: 0px 6px 12px #00000033;
 
-// TextField
+// TextField, Select
 $text-field-width: 222px;
 $text-field-height: 56px;
+
 $input-padding: 16.5px 14px 5px;
+$select-padding: 20px 40px 20px 16px;
+
 $input-font-size: 16px;
 $label-font-size: 12px;

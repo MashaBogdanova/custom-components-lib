@@ -1,0 +1,60 @@
+@use '../../sass/abstract/constants' as constants;
+
+.container {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.label {
+  position: absolute;
+  top: -10px;
+  left: 8px;
+  z-index: 1;
+
+  padding: 4px;
+
+  font-size: constants.$label-font-size;
+  color: constants.$dark;
+
+  background-color: constants.$white;
+}
+
+.select {
+  width: 100%;
+  padding: constants.$select-padding;
+
+  font-size: constants.$input-font-size;
+  color: constants.$dark;
+
+  background-color: constants.$white;
+  border: 1px solid constants.$border-color;
+  border-radius: constants.$border-radius;
+  appearance: none;
+
+  transition: constants.$transition;
+
+  &:hover {
+    border-color: constants.$dark;
+  }
+
+  &:focus {
+    border-color: constants.$primary-color;
+    outline: none;
+  }
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  color: constants.$dark;
+}
