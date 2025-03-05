@@ -1,14 +1,7 @@
 // Common styles
-
-$font-weight: 500;
-
-$border-radius: 4px;
-$transition: all 0.2s ease-in-out;
-
 $primary-color: #1976d2;
 $primary-hover: #115293;
 $primary-outline: #1976d280;
-$text-color: #1976d2;
 $text-hover-bg: #1976d21a;
 $outlined-hover-bg: #1976d20a;
 $filled-bg: #0000000f;
@@ -19,10 +12,16 @@ $error-color: #f44336;
 $white: #ffffff;
 $dark: #00000099;
 
+$font-weight: 500;
+$border-radius: 4px;
+
+$transition: all 0.2s ease-in-out;
+$transition-opacity: opacity 0.3s ease-in-out;
+
 // Button
-$button-padding: 6px 16px;
-$button-padding-small: 4px 10px;
-$button-padding-large: 8px 22px;
+$button-padding: 10px 20px;
+$button-padding-small: 8px 14px;
+$button-padding-large: 12px 26px;
 
 $button-font-size: 14px;
 $button-font-size-small: 13px;
@@ -32,6 +31,10 @@ $ripple-color: #ffffff4d;
 $ripple-color-dark: #1976d280;
 $ripple-size: 100px;
 $ripple-scale: 2.5;
+
+$box-shadow-contained-default: 0px 2px 4px #00000019;
+$box-shadow-contained-hover: 0px 4px 8px #00000026;
+$box-shadow-contained-active: 0px 6px 12px #00000033;
 
 // TextField
 $text-field-width: 222px;

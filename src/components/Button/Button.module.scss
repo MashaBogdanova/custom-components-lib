@@ -19,6 +19,54 @@
 
   transition: constants.$transition;
 
+  &.contained {
+    color: constants.$white;
+    background: constants.$primary-color;
+    box-shadow: constants.$box-shadow-contained-default;
+
+    &:hover {
+      background: constants.$primary-hover;
+      box-shadow: constants.$box-shadow-contained-hover;
+    }
+
+    &:active {
+      box-shadow: constants.$box-shadow-contained-active;
+    }
+  }
+
+  &.text {
+    color: constants.$primary-color;
+
+    &:hover {
+      background: constants.$text-hover-bg;
+    }
+  }
+
+  &.outlined {
+    color: constants.$primary-color;
+    border: 1px solid constants.$primary-outline;
+
+    &:hover {
+      background: constants.$outlined-hover-bg;
+      border: 1px solid constants.$primary-color;
+    }
+  }
+
+  &.small {
+    padding: constants.$button-padding-small;
+    font-size: constants.$button-font-size-small;
+  }
+
+  &.medium {
+    padding: constants.$button-padding;
+    font-size: constants.$button-font-size;
+  }
+
+  &.large {
+    padding: constants.$button-padding-large;
+    font-size: constants.$button-font-size-large;
+  }
+
   &:after {
     content: '';
 
@@ -41,50 +89,9 @@
     animation: ripple 0.6s linear;
   }
 
-  &.contained {
-    color: constants.$white;
-    background: constants.$primary-color;
-
-    &:hover {
-      background: constants.$primary-hover;
-    }
-  }
-
-  &.text {
-    color: constants.$text-color;
-
-    &:hover {
-      background: constants.$text-hover-bg;
-    }
-  }
-
-  &.outlined {
-    color: constants.$text-color;
-    border: 1px solid constants.$primary-outline;
-
-    &:hover {
-      background: constants.$outlined-hover-bg;
-    }
-  }
-
   &.text:after,
   &.outlined:after {
     background: constants.$ripple-color-dark;
-  }
-
-  &.small {
-    padding: constants.$button-padding-small;
-    font-size: constants.$button-font-size-small;
-  }
-
-  &.medium {
-    padding: constants.$button-padding;
-    font-size: constants.$button-font-size;
-  }
-
-  &.large {
-    padding: constants.$button-padding-large;
-    font-size: constants.$button-font-size-large;
   }
 }
 
