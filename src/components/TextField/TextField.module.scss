@@ -1,0 +1,134 @@
+@use '../../sass/abstract/constants' as constants;
+
+.textfield {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  width: constants.$text-field-width;
+  height: constants.$text-field-height;
+
+  .label {
+    position: absolute;
+    top: -8px;
+    left: 8px;
+
+    padding: 2px;
+
+    font-size: constants.$label-font-size;
+    line-height: 1;
+    color: constants.$dark;
+
+    background-color: constants.$white;
+  }
+
+  .label-default {
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:focus {
+    .label-default {
+      opacity: 1;
+    }
+  }
+
+  &:focus-within .label-default {
+    opacity: 1;
+  }
+
+
+  .input {
+    display: block;
+    height: 100%;
+    padding: constants.$input-padding;
+
+    font-size: constants.$input-font-size;
+    font-weight: constants.$font-weight;
+
+    outline: none;
+
+    transition: constants.$transition;
+
+    &::placeholder {
+      opacity: 1;
+      transition: opacity 0.3s;
+    }
+
+    &:focus::placeholder {
+      opacity: 0;
+    }
+  }
+
+  &.outlined {
+    .input {
+      border: 1px solid constants.$border-color;
+      border-radius: constants.$border-radius;
+    }
+
+    &:hover .input {
+      border-color: constants.$dark;
+    }
+
+    .input:focus {
+      border: 2px solid constants.$primary-color;
+    }
+  }
+
+  &.filled {
+    .input {
+      background-color: constants.$outlined-hover-bg;
+      border: none;
+      border-radius: constants.$border-radius 0 0 constants.$border-radius;
+    }
+
+    &:hover .input {
+      background-color: lighten(constants.$outlined-hover-bg, 5%);
+    }
+
+    input:focus {
+      border-bottom: 2px solid constants.$primary-color;
+      background-color: constants.$white;
+    }
+  }
+
+  &.standard {
+    .input {
+      border: none;
+      border-bottom: 1px solid constants.$border-color;
+      border-radius: 0;
+    }
+
+    &:hover .input {
+      background: constants.$text-hover-bg;
+    }
+
+    .input:focus {
+      border-bottom: 2px solid constants.$primary-color;
+    }
+  }
+
+  &.error {
+    .input {
+      border-color: constants.$error-color;
+    }
+
+    &.outlined {
+      .input:focus {
+        border-color: constants.$error-color;
+      }
+    }
+
+    &.filled {
+      .input:focus {
+        border-bottom-color: constants.$error-color;
+      }
+    }
+
+    &.standard {
+      .input:focus {
+        border-bottom-color: constants.$error-color;
+      }
+    }
+  }
+}
