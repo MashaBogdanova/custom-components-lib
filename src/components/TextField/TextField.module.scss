@@ -9,17 +9,11 @@
   height: constants.$text-field-height;
 
   .label {
-    position: absolute;
-    top: -8px;
-    left: 8px;
-
-    padding: 2px;
+    margin: 4px;
 
     font-size: constants.$label-font-size;
     line-height: 1;
     color: constants.$dark;
-
-    background-color: constants.$white;
   }
 
   .label-default {
@@ -51,6 +45,7 @@
     transition: constants.$transition;
 
     &::placeholder {
+      color: constants.$border-color-dark;
       opacity: 1;
       transition: opacity 0.3s;
     }
@@ -77,18 +72,25 @@
 
   &.filled {
     .input {
-      background-color: constants.$outlined-hover-bg;
+      background-color: constants.$filled-bg;
       border: none;
-      border-radius: constants.$border-radius 0 0 constants.$border-radius;
+      border-bottom: 1px solid constants.$border-color-dark;
+      border-radius: constants.$border-radius constants.$border-radius 0 0;
     }
 
     &:hover .input {
-      background-color: lighten(constants.$outlined-hover-bg, 5%);
+      background-color: constants.$filled-hover-bg;
+      border-bottom: 1px solid constants.$dark;
     }
 
-    input:focus {
+    .input:focus {
       border-bottom: 2px solid constants.$primary-color;
-      background-color: constants.$white;
+      background-color: constants.$filled-bg;
+    }
+
+    .input:focus .input:hover {
+      border-bottom: 2px solid constants.$primary-color;
+      background-color: constants.$filled-bg;
     }
   }
 
@@ -100,11 +102,15 @@
     }
 
     &:hover .input {
-      background: constants.$text-hover-bg;
+      border-bottom: 2px solid constants.$dark;
     }
 
     .input:focus {
       border-bottom: 2px solid constants.$primary-color;
+    }
+
+    &:focus-within .label {
+      color: constants.$primary-color;
     }
   }
 
@@ -120,12 +126,6 @@
     }
 
     &.filled {
-      .input:focus {
-        border-bottom-color: constants.$error-color;
-      }
-    }
-
-    &.standard {
       .input:focus {
         border-bottom-color: constants.$error-color;
       }
