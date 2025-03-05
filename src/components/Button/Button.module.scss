@@ -73,18 +73,18 @@
   }
 
   &.small {
-    padding: constants.$padding-small;
-    font-size: constants.$font-size-small;
+    padding: constants.$button-padding-small;
+    font-size: constants.$button-font-size-small;
   }
 
   &.medium {
-    padding: constants.$padding;
-    font-size: constants.$font-size;
+    padding: constants.$button-padding;
+    font-size: constants.$button-font-size;
   }
 
   &.large {
-    padding: constants.$padding-large;
-    font-size: constants.$font-size-large;
+    padding: constants.$button-padding-large;
+    font-size: constants.$button-font-size-large;
   }
 }
 

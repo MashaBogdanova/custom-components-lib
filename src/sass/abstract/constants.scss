@@ -1,11 +1,5 @@
-// Button
-$padding: 6px 16px;
-$padding-small: 4px 10px;
-$padding-large: 8px 22px;
+// Common styles
 
-$font-size: 14px;
-$font-size-small: 13px;
-$font-size-large: 15px;
 $font-weight: 500;
 
 $border-radius: 4px;
@@ -17,9 +11,28 @@ $primary-outline: #1976d280;
 $text-color: #1976d2;
 $text-hover-bg: #1976d21a;
 $outlined-hover-bg: #1976d20a;
+$border-color: #0000003a;
+$error-color: #f44336;
 $white: #ffffff;
+$dark: #00000099;
+
+// Button
+$button-padding: 6px 16px;
+$button-padding-small: 4px 10px;
+$button-padding-large: 8px 22px;
+
+$button-font-size: 14px;
+$button-font-size-small: 13px;
+$button-font-size-large: 15px;
 
 $ripple-color: #ffffff4d;
 $ripple-color-dark: #1976d280;
 $ripple-size: 100px;
 $ripple-scale: 2.5;
+
+// TextField
+$text-field-width: 222px;
+$text-field-height: 56px;
+$input-padding: 16.5px 14px;
+$input-font-size: 16px;
+$label-font-size: 12px;
