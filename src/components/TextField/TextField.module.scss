@@ -9,7 +9,9 @@
   height: constants.$text-field-height;
 
   .label {
-    margin: 4px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
 
     font-size: constants.$label-font-size;
     line-height: 1;
@@ -21,16 +23,15 @@
     transition: constants.$transition-opacity;
   }
 
-  &:focus {
+  &:focus-within {
+    .label {
+      color: constants.$primary-color;
+    }
+
     .label-default {
       opacity: 1;
     }
   }
-
-  &:focus-within .label-default {
-    opacity: 1;
-  }
-
 
   .input {
     display: block;
@@ -117,6 +118,10 @@
   &.error {
     .input {
       border-color: constants.$error-color;
+    }
+
+    .label {
+      color: constants.$error-color;
     }
 
     &.outlined {
