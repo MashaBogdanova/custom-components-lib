@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
+import * as path from "path";
 
 const config: StorybookConfig = {
   stories: [
@@ -17,6 +18,11 @@ const config: StorybookConfig = {
     options: {}
   },
   webpackFinal: async (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, '../src'),
+    };
+
     config.module = config.module || { rules: [] };
 
     config.module.rules.push(
