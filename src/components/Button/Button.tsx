@@ -4,12 +4,18 @@ import { useState } from 'react';
 import * as styles from './Button.module.scss';
 
 export interface ButtonProps {
-  label: string;
-  type: 'text' | 'contained' | 'outlined';
+  label?: string;
+  variant: 'text' | 'contained' | 'outlined';
+  size: 'small' | 'medium' | 'large';
   onClick?: () => void;
 }
 
-const MyButton: React.FC<ButtonProps> = ({ label, type, onClick }) => {
+const Button: React.FC<ButtonProps> = ({
+  label = 'Button',
+  variant = 'contained',
+  size = 'medium',
+  onClick,
+}) => {
   const [ripple, setRipple] = useState(false);
   const handleClick = (): void => {
     setRipple(true);
@@ -20,7 +26,7 @@ const MyButton: React.FC<ButtonProps> = ({ label, type, onClick }) => {
 
   return (
     <button
-      className={`${styles.button} ${styles[type]} ${ripple ? styles.ripple : ''}`}
+      className={`${styles.button} ${styles[variant]} ${styles[size]} ${ripple ? styles.ripple : ''}`}
       onClick={handleClick}
     >
       {label}
@@ -28,4 +34,4 @@ const MyButton: React.FC<ButtonProps> = ({ label, type, onClick }) => {
   );
 };
 
-export default MyButton;
+export default Button;

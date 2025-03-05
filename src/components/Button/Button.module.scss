@@ -6,10 +6,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: constants.$padding;
   overflow: hidden;
 
-  font-size: constants.$font-size;
   font-weight: constants.$font-weight;
   text-transform: uppercase;
 
@@ -72,6 +70,21 @@
   &.text:after,
   &.outlined:after {
     background: constants.$ripple-color-dark;
+  }
+
+  &.small {
+    padding: constants.$padding-small;
+    font-size: constants.$font-size-small;
+  }
+
+  &.medium {
+    padding: constants.$padding;
+    font-size: constants.$font-size;
+  }
+
+  &.large {
+    padding: constants.$padding-large;
+    font-size: constants.$font-size-large;
   }
 }
 
