@@ -4,20 +4,23 @@ import { useState } from 'react';
 import * as styles from './Button.module.scss';
 
 export interface ButtonProps {
-  label?: string;
   variant: 'text' | 'contained' | 'outlined';
   size: 'small' | 'medium' | 'large';
+  label?: string;
+  disabled?: boolean;
   onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  label = 'Button',
   variant = 'contained',
   size = 'medium',
+  label = 'Button',
+  disabled = false,
   onClick,
 }) => {
   const [ripple, setRipple] = useState(false);
   const handleClick = (): void => {
+    if (disabled) return;
     setRipple(true);
 
     if (onClick) onClick();
@@ -26,7 +29,14 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`${styles.button} ${styles[variant]} ${styles[size]} ${ripple ? styles.ripple : ''}`}
+      className={`
+      ${styles.button} 
+      ${styles[variant]} 
+      ${styles[size]} 
+      ${ripple && !disabled ? styles.ripple : ''}
+      ${disabled ? styles.disabled : ''} 
+      `}
+      disabled={disabled}
       onClick={handleClick}
     >
       {label}

@@ -32,6 +32,12 @@
     &:active {
       box-shadow: constants.$box-shadow-contained-active;
     }
+
+    &.disabled {
+      color: constants.$disabled-text;
+      background: constants.$disabled-bg;
+      box-shadow: none;
+    }
   }
 
   &.text {
@@ -39,6 +45,10 @@
 
     &:hover {
       background: constants.$text-hover-bg;
+    }
+
+    &.disabled {
+      color: constants.$disabled-text;
     }
   }
 
@@ -49,6 +59,11 @@
     &:hover {
       background: constants.$outlined-hover-bg;
       border: 1px solid constants.$primary-color;
+    }
+
+    &.disabled {
+      color: constants.$disabled-text;
+      border: 1px solid constants.$disabled-text;
     }
   }
 
@@ -92,6 +107,12 @@
   &.text:after,
   &.outlined:after {
     background: constants.$ripple-color-dark;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
   }
 }
 
