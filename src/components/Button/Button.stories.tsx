@@ -13,6 +13,10 @@ const meta: Meta<typeof Button> = {
       options: ['small', 'medium', 'large'],
     },
     onClick: { action: 'clicked' },
+    disabled: { control: 'boolean' },
+    autofocus: { control: 'boolean' },
+    value: { control: 'text' },
+    className: { control: 'text' },
   },
 };
 
@@ -65,5 +69,23 @@ export const Large: Story = {
     value: 'Large',
     variant: 'contained',
     size: 'large',
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    value: 'Disabled',
+    variant: 'contained',
+    size: 'medium',
+    disabled: true,
+  },
+};
+
+export const AutoFocus: Story = {
+  args: {
+    value: 'AutoFocus',
+    variant: 'contained',
+    size: 'medium',
+    autofocus: true,
   },
 };
