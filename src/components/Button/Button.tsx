@@ -6,18 +6,24 @@ import * as styles from './Button.module.scss';
 export interface ButtonProps {
   variant: 'text' | 'contained' | 'outlined';
   size: 'small' | 'medium' | 'large';
-  label?: string;
+  value?: string;
   disabled?: boolean;
+  autofocus?: boolean;
+  type?: 'submit' | 'reset' | 'button';
+  className?: string;
   onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
   variant = 'contained',
   size = 'medium',
-  label = 'Button',
+  value = 'Button',
   disabled = false,
+  autofocus = false,
+  type = 'button',
+  className,
   onClick,
-}) => {
+}: ButtonProps) => {
   const [ripple, setRipple] = useState(false);
   const handleClick = (): void => {
     if (disabled) return;
@@ -35,11 +41,14 @@ const Button: React.FC<ButtonProps> = ({
       ${styles[size]} 
       ${ripple && !disabled ? styles.ripple : ''}
       ${disabled ? styles.disabled : ''} 
+      ${className ? styles[className] : ''}
       `}
       disabled={disabled}
+      type={type}
+      autoFocus={autofocus}
       onClick={handleClick}
     >
-      {label}
+      {value}
     </button>
   );
 };

@@ -22,7 +22,7 @@ type Story = StoryObj<typeof Button>;
 
 export const Text: Story = {
   args: {
-    label: 'Text',
+    value: 'Text',
     variant: 'text',
     size: 'medium',
   },
@@ -30,7 +30,7 @@ export const Text: Story = {
 
 export const Contained: Story = {
   args: {
-    label: 'Contained',
+    value: 'Contained',
     variant: 'contained',
     size: 'medium',
   },
@@ -38,7 +38,7 @@ export const Contained: Story = {
 
 export const Outlined: Story = {
   args: {
-    label: 'Outlined',
+    value: 'Outlined',
     variant: 'outlined',
     size: 'medium',
   },
@@ -46,7 +46,7 @@ export const Outlined: Story = {
 
 export const Small: Story = {
   args: {
-    label: 'Small',
+    value: 'Small',
     variant: 'contained',
     size: 'small',
   },
@@ -54,7 +54,7 @@ export const Small: Story = {
 
 export const Medium: Story = {
   args: {
-    label: 'Medium',
+    value: 'Medium',
     variant: 'contained',
     size: 'medium',
   },
@@ -62,7 +62,7 @@ export const Medium: Story = {
 
 export const Large: Story = {
   args: {
-    label: 'Large',
+    value: 'Large',
     variant: 'contained',
     size: 'large',
   },
