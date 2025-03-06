@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as styles from '@/components/Select/Select.module.scss';
+import * as styles from './CustomSelect.module.scss';
 
 interface Props {
   isOpen: boolean;
