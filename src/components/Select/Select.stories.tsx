@@ -1,29 +1,22 @@
-import { Meta, Story } from '@storybook/react';
 import * as React from 'react';
-import { useState } from 'react';
-
+import { Story, Meta } from '@storybook/react';
 import Select, { SelectProps } from './Select';
 
 export default {
   title: 'Components/Select',
   component: Select,
-  argTypes: {
-    onChange: { action: 'changed' },
-  },
 } as Meta;
 
-const Template: Story<SelectProps> = (args) => {
-  const [value, setValue] = useState(args.value);
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setValue(e.target.value);
-    args.onChange(e);
-  };
-
-  return <Select {...args} value={value} onChange={handleChange} />;
-};
+const Template: Story<SelectProps> = (args) => <Select {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  value: '1',
-  label: 'Choose',
+  initialValue: '',
+  label: 'Select an option',
+  options: [
+    { value: '1', label: 'Option 1' },
+    { value: '2', label: 'Option 2' },
+    { value: '3', label: 'Option 3' },
+  ],
+  onChange: (selectedOption) => console.log(selectedOption),
 };
