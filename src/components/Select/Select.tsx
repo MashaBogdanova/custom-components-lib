@@ -1,9 +1,12 @@
 import * as React from 'react';
+import { useState } from 'react';
+
+import CustomSelect from '@/components/Select/CustomSelect/CustomSelect';
+import OptionsList from '@/components/Select/OptionsList/OptionsList';
 
 import * as styles from './Select.module.scss';
-import {useState} from "react";
 
-interface Option {
+export interface Option {
   value: string;
   label: string;
 }
@@ -16,25 +19,25 @@ export interface SelectProps {
 }
 
 const defaultOptions = [
-  {value: '1', label: 'Option 1'},
-  {value: '2', label: 'Option 2'},
-  {value: '3', label: 'Option 3'},
+  { value: '1', label: 'Option 1' },
+  { value: '2', label: 'Option 2' },
+  { value: '3', label: 'Option 3' },
 ];
 
 const Select: React.FC<SelectProps> = ({
-                                         initialValue = '',
-                                         label= 'Your label',
-                                         options = defaultOptions,
-                                         onChange,
-                                       }) => {
-
+  initialValue = '',
+  label = 'Your label',
+  options = defaultOptions,
+  onChange,
+}) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [isSelected, setSelected] = useState<boolean>(false);
   const [selectedValue, setSelectedValue] = useState<string>(initialValue);
 
   const handleSelect = (selectedOption: Option) => {
     setSelectedValue(selectedOption.label);
-    onChange && onChange(selectedOption);
+
+    if (onChange) onChange(selectedOption);
     setOpen(false);
     setSelected(true);
   };
@@ -47,50 +50,30 @@ const Select: React.FC<SelectProps> = ({
 
   return (
     <div className={styles.container} onBlur={handleBlur}>
-      {label && <label className={`
-      ${styles.label} 
-      ${isOpen ? styles.label_focused : ''}
-      ${isSelected ? styles.hidden : ''}
-      `}
-      >{label}</label>}
+      {label && (
+        <label
+          className={`${styles.label} ${isOpen || isSelected ? styles.label_focused : ''}`}
+        >
+          {label}
+        </label>
+      )}
 
       <div className={styles.selectWrapper}>
-        <div
-          className={styles.select}
-          role="combobox"
-          aria-haspopup="listbox"
-          aria-expanded={isOpen}
-          aria-controls="custom-select-list"
-          tabIndex={0}
-          onClick={() => setOpen(true)}
-        >
-          <div className={styles.selected}>
-            {isSelected
-              ? selectedValue
-              : ''
-            }
-          </div>
-          <span className={styles.icon}>▼</span>
-        </div>
-
+        <CustomSelect
+          isOpen={isOpen}
+          setOpen={setOpen}
+          isSelected={isSelected}
+          selectedValue={selectedValue}
+        />
         {isOpen && (
-          <ul className={styles.optionsList} role="listbox" id="custom-select-list">
-          {options.map((option: Option) => (
-            <li
-              className={styles.option}
-              key={option.value}
-              role="option"
-              aria-selected={option.value === initialValue}
-              tabIndex={0}
-              onClick={() => handleSelect(option)}
-              >
-              {option.label}
-            </li>
-          ))}
-          </ul>
-          )}
+          <OptionsList
+            options={options}
+            handleSelect={handleSelect}
+            initialValue={initialValue}
+          />
+        )}
       </div>
     </div>
   );
-}
+};
 export default Select;

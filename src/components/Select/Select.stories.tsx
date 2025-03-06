@@ -1,13 +1,14 @@
+import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
-import { Story, Meta } from '@storybook/react';
-import Select, { SelectProps } from './Select';
+
+import Select, {Option, SelectProps} from './Select';
 
 export default {
   title: 'Components/Select',
   component: Select,
 } as Meta;
 
-const Template: Story<SelectProps> = (args) => <Select {...args} />;
+const Template: StoryFn<SelectProps> = (args: SelectProps) => <Select {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -18,5 +19,5 @@ Default.args = {
     { value: '2', label: 'Option 2' },
     { value: '3', label: 'Option 3' },
   ],
-  onChange: (selectedOption) => console.log(selectedOption),
+  onChange: (selectedOption: Option) => alert(selectedOption.label),
 };

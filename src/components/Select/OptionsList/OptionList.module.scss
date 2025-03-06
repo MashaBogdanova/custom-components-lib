@@ -1,0 +1,35 @@
+@use '../../../sass/abstract/constants' as constants;
+
+.optionsList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+
+  margin: 0;
+  padding: 0;
+  width: 198px;
+  max-height: 200px;
+  z-index: 10;
+
+  background-color: constants.$white;
+  border-radius: 0 0 constants.$border-radius constants.$border-radius;
+  box-shadow: constants.$box-shadow-contained-default;
+  list-style: none;
+  overflow-y: auto;
+}
+
+.option {
+  padding: constants.$select-padding;
+
+  font-size: constants.$input-font-size;
+  color: constants.$dark;
+
+  cursor: pointer;
+
+  transition: constants.$transition;
+
+  &:hover {
+    background-color: constants.$border-color;
+  }
+}
