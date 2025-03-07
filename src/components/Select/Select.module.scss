@@ -10,10 +10,11 @@
 }
 
 .label {
-  @include mixins.label(15px, 15px, 8px, -10px);
-  z-index: 1;
   padding: 4px;
+  z-index: 1;
   background-color: constants.$white;
+  @include mixins.label(15px, 15px, 8px, -10px);
+
   &_focused {
   }
 }

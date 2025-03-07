@@ -37,6 +37,7 @@
       color: constants.$disabled-text;
       background: constants.$disabled-bg;
       box-shadow: none;
+      cursor: not-allowed;
     }
   }
 
@@ -49,6 +50,7 @@
 
     &.disabled {
       color: constants.$disabled-text;
+      cursor: not-allowed;
     }
   }
 
@@ -64,6 +66,7 @@
     &.disabled {
       color: constants.$disabled-text;
       border: 1px solid constants.$disabled-text;
+      cursor: not-allowed;
     }
   }
 
@@ -112,7 +115,7 @@
   &.disabled {
     opacity: 0.5;
     pointer-events: none;
-    cursor: default;
+    cursor: not-allowed;
   }
 }
 
