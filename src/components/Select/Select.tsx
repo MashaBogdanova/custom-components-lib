@@ -16,6 +16,10 @@ export interface SelectProps {
   options: Option[];
   onChange: (value: Option) => void;
   label?: string;
+  selectClassName?: string;
+  labelClassName?: string;
+  listClassName?: string;
+  listItemClassName?: string;
 }
 
 const defaultOptions = [
@@ -29,6 +33,10 @@ const Select: React.FC<SelectProps> = ({
   label = 'Your label',
   options = defaultOptions,
   onChange,
+  selectClassName,
+  labelClassName,
+  listClassName,
+                                         listItemClassName
 }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [isSelected, setSelected] = useState<boolean>(false);
@@ -52,7 +60,11 @@ const Select: React.FC<SelectProps> = ({
     <div className={styles.container} onBlur={handleBlur}>
       {label && (
         <label
-          className={`${styles.label} ${isOpen || isSelected ? styles.label_focused : ''}`}
+          className={`
+          ${styles.label} 
+          ${isOpen || isSelected ? styles.label_focused : ''}
+          ${labelClassName ? styles[labelClassName] : ''}
+          `}
         >
           {label}
         </label>
@@ -64,12 +76,15 @@ const Select: React.FC<SelectProps> = ({
           setOpen={setOpen}
           isSelected={isSelected}
           selectedValue={selectedValue}
+          className={selectClassName && selectClassName}
         />
         {isOpen && (
           <OptionsList
             options={options}
             handleSelect={handleSelect}
             initialValue={initialValue}
+            className={listClassName && listClassName}
+            itemClassName={listItemClassName && listItemClassName}
           />
         )}
       </div>

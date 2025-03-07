@@ -7,12 +7,22 @@ interface Props {
   setOpen: (isOpen: boolean) => void;
   isSelected: boolean;
   selectedValue: string;
+  className?: string;
 }
 
-function CustomSelect({ isOpen, setOpen, isSelected, selectedValue }: Props) {
+function CustomSelect({
+  isOpen,
+  setOpen,
+  isSelected,
+  selectedValue,
+  className,
+}: Props) {
   return (
     <div
-      className={styles.select}
+      className={`
+      ${styles.select} 
+      ${className ? styles[className] : ''}
+      `}
       role="combobox"
       aria-haspopup="listbox"
       aria-expanded={isOpen}

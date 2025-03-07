@@ -10,6 +10,9 @@ export interface TextFieldProps {
   label?: string;
   placeholder?: string;
   error?: boolean;
+  className?: string;
+  inputClassName?: string;
+  labelClassName?: string;
 }
 
 const TextField: React.FC<TextFieldProps> = ({
@@ -17,21 +20,39 @@ const TextField: React.FC<TextFieldProps> = ({
   label,
   placeholder = '',
   error = false,
+  className,
+  inputClassName,
+  labelClassName,
 }) => {
   const [isFocused, setFocused] = useState<boolean>(false);
 
   return (
     <div
-      className={`${styles.textfield} ${styles[variant]} ${error ? styles.error : ''}`}
+      className={`
+      ${styles.textfield} 
+      ${styles[variant]} 
+      ${error ? styles.error : ''}
+      ${className ? styles[className] : ''}
+      `}
       onClick={() => setFocused(true)}
       onBlur={() => setFocused(false)}
     >
       <label
-        className={`${styles.label} ${isFocused ? styles.label_focused : ''}`}
+        className={`
+        ${styles.label} 
+        ${isFocused ? styles.label_focused : ''}
+        ${labelClassName ? styles[labelClassName] : ''}
+        `}
       >
         {label ? label : capitalize(variant)}
       </label>
-      <input className={styles.input} placeholder={placeholder} />
+      <input
+        className={`
+        ${styles.input} 
+        ${inputClassName ? styles[inputClassName] : ''}
+        `}
+        placeholder={placeholder}
+      />
     </div>
   );
 };
