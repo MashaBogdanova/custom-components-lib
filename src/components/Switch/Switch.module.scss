@@ -1,0 +1,80 @@
+@use '../../sass/abstract/constants' as constants;
+
+.switch {
+  position: relative;
+
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+
+  &_checked .slider {
+    background-color: constants.$primary-color;
+  }
+
+  &:not(.disabled):hover .slider {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  &:not(.disabled):active .slider:before {
+    width: 22px;
+  }
+}
+
+.disabled {
+  opacity: 0.6;
+  // todo: не работает
+  cursor: not-allowed;
+
+  &.slider {
+    cursor: not-allowed;
+  }
+}
+
+.input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: constants.$toggle-bg;
+  border-radius: 34px;
+  cursor: pointer;
+
+  transition: constants.$transition-toggle;
+
+  &:before {
+    content: '';
+
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+
+    background-color: constants.$white;
+    border-radius: 50%;
+
+    transition: constants.$transition-toggle;
+  }
+
+  &:hover {
+    box-shadow: 0 0 5px constants.$shadow-color;
+  }
+
+  &:active:before {
+    width: 22px;
+  }
+
+  &_checked {
+    background-color: constants.$primary-color;
+
+    &:before {
+      transform: translateX(26px);
+    }
+  }
+}

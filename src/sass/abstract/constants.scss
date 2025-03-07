@@ -8,6 +8,8 @@ $filled-bg: #0000000f;
 $filled-hover-bg: #00000015;
 $border-color: #0000003a;
 $border-color-dark: #0000007c;
+$shadow-color: #0000007c;
+$toggle-bg: #ccccccff;
 
 $error-color: #f44336;
 $disabled-bg: #e0e0e0;
@@ -20,6 +22,7 @@ $font-weight: 500;
 $border-radius: 4px;
 
 $transition: all 0.2s ease-in-out;
+$transition-toggle: all 0.4s ease-in-out;
 $transition-opacity: opacity 0.3s ease-in-out;
 
 // Button
