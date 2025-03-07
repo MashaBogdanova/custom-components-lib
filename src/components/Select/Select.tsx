@@ -36,7 +36,7 @@ const Select: React.FC<SelectProps> = ({
   selectClassName,
   labelClassName,
   listClassName,
-                                         listItemClassName
+  listItemClassName,
 }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [isSelected, setSelected] = useState<boolean>(false);

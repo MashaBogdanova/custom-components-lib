@@ -17,7 +17,7 @@ function OptionsList({
   handleSelect,
   initialValue,
   className,
-  itemClassName
+  itemClassName,
 }: Props) {
   return (
     <ul
