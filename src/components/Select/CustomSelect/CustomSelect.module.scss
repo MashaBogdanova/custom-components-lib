@@ -40,8 +40,13 @@
   font-size: 12px;
   color: constants.$dark;
 
-  pointer-events: none;
   cursor: pointer;
 
   transform: translateY(-50%);
+  transition: constants.$transition;
+
+  &_rotate {
+    transform: translateY(-50%) scaleY(-1);
+    transform-origin: center;
+  }
 }

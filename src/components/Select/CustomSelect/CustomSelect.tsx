@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import * as styles from './CustomSelect.module.scss';
+import {useState} from "react";
 
 interface Props {
   isOpen: boolean;
@@ -11,12 +12,14 @@ interface Props {
 }
 
 function CustomSelect({
-  isOpen,
-  setOpen,
-  isSelected,
-  selectedValue,
-  className,
-}: Props) {
+                        isOpen,
+                        setOpen,
+                        isSelected,
+                        selectedValue,
+                        className,
+                      }: Props) {
+  const [isIconRotate, setIconRotate] = useState<boolean>(false);
+
   return (
     <div
       className={`
@@ -32,7 +35,15 @@ function CustomSelect({
     >
       <div className={styles.selected}>{isSelected ? selectedValue : ''}</div>
 
-      <span className={styles.icon}>▼</span>
+      <div
+        className={`
+        ${styles.icon}
+        ${isIconRotate ? styles.icon_rotate : ''}
+        `}
+        onClick={() => setIconRotate(true)}
+        onBlur={() => setIconRotate(false)}
+        tabIndex={0}
+      >▼</div>
     </div>
   );
 }
