@@ -1,4 +1,5 @@
 @use '../../sass/abstract/constants' as constants;
+@use '../../sass/abstract/mixins' as mixins;
 
 .container {
   position: relative;
@@ -9,26 +10,11 @@
 }
 
 .label {
-  position: absolute;
-  top: 15px;
-  left: 15px;
+  @include mixins.label(15px, 15px, 8px, -10px);
   z-index: 1;
-
   padding: 4px;
-
-  font-size: constants.$input-font-size;
-  color: constants.$dark;
-
   background-color: constants.$white;
-  transition: constants.$transition;
-
   &_focused {
-    top: -10px;
-    left: 8px;
-    padding: 4px;
-
-    font-size: constants.$label-font-size;
-    color: constants.$primary-color;
   }
 }
 

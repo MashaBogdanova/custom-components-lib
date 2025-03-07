@@ -1,0 +1,20 @@
+@use '../../sass/abstract/constants' as constants;
+
+@mixin label($translateX, $translateY, $translateXFocused, $translateYFocused) {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  font-size: constants.$input-font-size;
+  color: constants.$dark;
+
+  transform: translate($translateX, $translateY);
+  transition: constants.$transition;
+
+  &_focused {
+    transform: translate($translateXFocused, $translateYFocused);
+
+    font-size: constants.$label-font-size;
+    color: constants.$primary-color;
+  }
+}

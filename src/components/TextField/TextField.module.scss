@@ -1,4 +1,5 @@
 @use '../../sass/abstract/constants' as constants;
+@use '../../sass/abstract/mixins' as mixins;
 
 .textfield {
   position: relative;
@@ -8,51 +9,9 @@
   width: constants.$text-field-width;
   height: constants.$text-field-height;
 
-  .label {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-
-    font-size: constants.$label-font-size;
-    line-height: 1;
-    color: constants.$dark;
-  }
-
-  .label-default {
-    opacity: 0;
-    transition: constants.$transition-opacity;
-  }
-
   &:focus-within {
     .label {
       color: constants.$primary-color;
-    }
-
-    .label-default {
-      opacity: 1;
-    }
-  }
-
-  .input {
-    display: block;
-    height: 100%;
-    padding: constants.$input-padding;
-
-    font-size: constants.$input-font-size;
-    font-weight: constants.$font-weight;
-
-    outline: none;
-
-    transition: constants.$transition;
-
-    &::placeholder {
-      color: constants.$border-color-dark;
-      opacity: 1;
-      transition: constants.$transition-opacity;
-    }
-
-    &:focus::placeholder {
-      opacity: 0;
     }
   }
 
@@ -135,5 +94,34 @@
         border-bottom-color: constants.$error-color;
       }
     }
+  }
+}
+
+.label {
+  @include mixins.label(15px, 20px, 8px, 4px);
+  &_focused {
+  }
+}
+
+.input {
+  display: block;
+  height: 100%;
+  padding: constants.$input-padding;
+
+  font-size: constants.$input-font-size;
+  font-weight: constants.$font-weight;
+
+  outline: none;
+
+  transition: constants.$transition;
+
+  &::placeholder {
+    color: constants.$border-color-dark;
+    opacity: 1;
+    transition: constants.$transition-opacity;
+  }
+
+  &:focus::placeholder {
+    opacity: 0;
   }
 }
