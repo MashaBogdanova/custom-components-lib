@@ -5,6 +5,7 @@ import Button from './Button';
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
+
   argTypes: {
     variant: {
       options: ['contained', 'text', 'outlined'],
@@ -16,7 +17,7 @@ const meta: Meta<typeof Button> = {
     disabled: { control: 'boolean' },
     autofocus: { control: 'boolean' },
     value: { control: 'text' },
-    className: { control: 'text' },
+    customStyle: { control: 'object' },
   },
 };
 
@@ -53,6 +54,7 @@ export const Small: Story = {
     value: 'Small',
     variant: 'contained',
     size: 'small',
+    customStyle: {},
   },
 };
 
