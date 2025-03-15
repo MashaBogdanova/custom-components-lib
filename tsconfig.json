@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
     "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "ESNext",
@@ -12,7 +13,12 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "types": [
+      "jest",
+      "@testing-library/jest-dom",
+      "@testing-library/react"
+    ]
   },
   "include": [
     "src",
