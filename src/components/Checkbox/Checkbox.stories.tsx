@@ -7,41 +7,34 @@ export default {
   title: 'Components/Checkbox',
   component: Checkbox,
   argTypes: {
-    label: { control: 'text' },
-    checked: { control: 'boolean' },
-    defaultChecked: { control: 'boolean' },
-    disabled: { control: 'boolean' },
+    onChange: { action: 'changed' },
   },
-} as Meta;
+} as Meta<typeof Checkbox>;
 
-const Template: StoryFn<CheckboxProps> = (args: CheckboxProps) => (
+const Template: StoryFn<typeof Checkbox> = (args: CheckboxProps) => (
   <Checkbox {...args} />
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Default',
-  defaultChecked: false,
-  disabled: false,
+  label: 'Default Checkbox',
 };
 
 export const Checked = Template.bind({});
 Checked.args = {
-  label: 'Checked',
-  defaultChecked: true,
-  disabled: false,
+  label: 'Checked Checkbox',
+  checked: true,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  label: 'Disabled',
-  defaultChecked: false,
+  label: 'Disabled Checkbox',
   disabled: true,
 };
 
-export const CheckedDisabled = Template.bind({});
-CheckedDisabled.args = {
-  label: 'Checked Disabled',
-  defaultChecked: true,
+export const DisabledChecked = Template.bind({});
+DisabledChecked.args = {
+  label: 'Disabled Checked Checkbox',
   disabled: true,
+  checked: true,
 };

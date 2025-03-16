@@ -1,42 +1,69 @@
 import * as React from 'react';
+import { useState } from 'react';
 
 import * as styles from './Checkbox.module.scss';
 
 export interface CheckboxProps {
   label?: string;
-  checked?: boolean;
-  defaultChecked?: boolean;
   disabled?: boolean;
-  className?: string;
-  labelClassName?: string;
+  checked?: boolean;
+  customInputStyle?: React.CSSProperties;
+  customInputClassName?: string;
+  customLabelStyle?: React.CSSProperties;
+  customLabelClassName?: string;
+  onChange?: (checked: boolean) => void;
 }
 
+export const DEFAULT_CHECKBOX_PROPS: CheckboxProps = {
+  label: 'Your label',
+  disabled: false,
+  checked: false,
+  customInputStyle: {},
+  customInputClassName: '',
+  customLabelStyle: {},
+  customLabelClassName: '',
+  // eslint-disable-next-line
+  onChange: (checked) => console.log(`Checkbox checked: ${checked}`),
+};
+
 function Checkbox({
-  label = 'Your label',
-  checked,
-  defaultChecked = false,
-  disabled = false,
-  className,
-  labelClassName,
+  label = DEFAULT_CHECKBOX_PROPS.label,
+  disabled = DEFAULT_CHECKBOX_PROPS.disabled,
+  checked = DEFAULT_CHECKBOX_PROPS.checked,
+  customInputStyle = DEFAULT_CHECKBOX_PROPS.customInputStyle,
+  customInputClassName = DEFAULT_CHECKBOX_PROPS.customInputClassName,
+  customLabelStyle = DEFAULT_CHECKBOX_PROPS.customLabelStyle,
+  customLabelClassName = DEFAULT_CHECKBOX_PROPS.customLabelClassName,
+  onChange = DEFAULT_CHECKBOX_PROPS.onChange,
 }: CheckboxProps) {
+  const [isChecked, setIsChecked] = useState(checked);
+
+  const handleChange = () => {
+    if (disabled) return;
+
+    setIsChecked((prev) => !prev);
+
+    if (onChange) onChange(isChecked);
+  };
+
   return (
     <label className={styles.checkbox}>
       <input
-        className={`
-        ${styles.input}
-        ${className ? styles[className] : ''}
-        `}
+        className={[styles.input, customInputClassName]
+          .filter(Boolean)
+          .join(' ')}
+        style={customInputStyle}
         type="checkbox"
-        checked={checked && checked}
-        defaultChecked={defaultChecked}
         disabled={disabled}
+        checked={isChecked}
+        onChange={handleChange}
       />
       {label && (
         <span
-          className={`
-          ${styles.label} 
-          ${labelClassName ? styles[labelClassName] : ''}
-          `}
+          className={[styles.label, customLabelClassName]
+            .filter(Boolean)
+            .join(' ')}
+          style={customLabelStyle}
         >
           {label}
         </span>
