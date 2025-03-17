@@ -5,15 +5,28 @@ import { createPortal } from 'react-dom';
 import * as styles from './Modal.module.scss';
 
 export interface ModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: ReactNode;
+  isOpen?: boolean;
+  children?: ReactNode;
+  customStyle?: React.CSSProperties;
+  customClassName?: string;
+  onClose?: () => void;
 }
 
+export const DEFAULT_MODAL_PROPS: ModalProps = {
+  isOpen: false,
+  children: <h1>Your modal</h1>,
+  customStyle: {},
+  customClassName: '',
+  // eslint-disable-next-line
+  onClose: () => console.log('Modal closed'),
+};
+
 const Modal = ({
-  isOpen,
-  onClose,
-  children = <h1>Your modal</h1>,
+  isOpen = DEFAULT_MODAL_PROPS.isOpen,
+  children = DEFAULT_MODAL_PROPS.children,
+  customStyle = DEFAULT_MODAL_PROPS.customStyle,
+  customClassName = DEFAULT_MODAL_PROPS.customClassName,
+  onClose = DEFAULT_MODAL_PROPS.onClose,
 }: ModalProps) => {
   const [modalRoot, setModalRoot] = useState(null);
 
@@ -31,8 +44,13 @@ const Modal = ({
   if (!isOpen || !modalRoot) return null;
 
   return createPortal(
-    <div className={styles.modal} onClick={onClose}>
-      <div className={styles.content} onClick={(e) => e.stopPropagation()}>
+    <div className={styles.modal} onClick={onClose} role="dialog">
+      <div
+        className={[styles.content, customClassName].filter(Boolean).join(' ')}
+        style={customStyle}
+        onClick={(e) => e.stopPropagation()}
+        data-testid="content"
+      >
         {children}
       </div>
     </div>,
