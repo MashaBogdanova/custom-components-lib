@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
 
-import CustomSelect from '@/components/Select/CustomSelect/CustomSelect';
-import OptionsList from '@/components/Select/OptionsList/OptionsList';
-
+import CustomSelect from './CustomSelect/CustomSelect';
+import OptionsList from './OptionsList/OptionsList';
 import * as styles from './Select.module.scss';
 
 export interface Option {
@@ -12,31 +11,55 @@ export interface Option {
 }
 
 export interface SelectProps {
-  initialValue: string;
-  options: Option[];
-  onChange: (value: Option) => void;
+  initialValue?: string;
+  options?: Option[];
   label?: string;
-  selectClassName?: string;
-  labelClassName?: string;
-  listClassName?: string;
-  listItemClassName?: string;
+  customSelectStyle?: React.CSSProperties;
+  customLabelStyle?: React.CSSProperties;
+  customListStyle?: React.CSSProperties;
+  customListItemStyle?: React.CSSProperties;
+  customSelectClassName?: string;
+  customLabelClassName?: string;
+  customListClassName?: string;
+  customListItemClassName?: string;
+  onChange?: (value: Option) => void;
 }
 
-const defaultOptions = [
+export const defaultOptions: Option[] = [
   { value: '1', label: 'Option 1' },
   { value: '2', label: 'Option 2' },
   { value: '3', label: 'Option 3' },
 ];
 
+export const DEFAULT_SELECT_PROPS: SelectProps = {
+  initialValue: '',
+  label: 'Your label',
+  options: defaultOptions,
+  customSelectStyle: {},
+  customLabelStyle: {},
+  customListStyle: {},
+  customListItemStyle: {},
+  customSelectClassName: '',
+  customLabelClassName: '',
+  customListClassName: '',
+  customListItemClassName: '',
+  // eslint-disable-next-line
+  onChange: (value) => console.log('Selected value', value),
+};
+
 const Select: React.FC<SelectProps> = ({
-  initialValue = '',
-  label = 'Your label',
-  options = defaultOptions,
+  initialValue = DEFAULT_SELECT_PROPS.initialValue,
+  label = DEFAULT_SELECT_PROPS.label,
+  options = DEFAULT_SELECT_PROPS.options,
+  customSelectStyle = DEFAULT_SELECT_PROPS.customSelectStyle,
+  customLabelStyle = DEFAULT_SELECT_PROPS.customLabelStyle,
+  customListStyle = DEFAULT_SELECT_PROPS.customListStyle,
+  customListItemStyle = DEFAULT_SELECT_PROPS.customListItemStyle,
+  customSelectClassName = DEFAULT_SELECT_PROPS.customSelectClassName,
+  customLabelClassName = DEFAULT_SELECT_PROPS.customLabelClassName,
+  customListClassName = DEFAULT_SELECT_PROPS.customListClassName,
+  customListItemClassName = DEFAULT_SELECT_PROPS.customListItemClassName,
   onChange,
-  selectClassName,
-  labelClassName,
-  listClassName,
-  listItemClassName,
 }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [isSelected, setSelected] = useState<boolean>(false);
@@ -60,11 +83,14 @@ const Select: React.FC<SelectProps> = ({
     <div className={styles.container} onBlur={handleBlur}>
       {label && (
         <label
-          className={`
-          ${styles.label} 
-          ${isOpen || isSelected ? styles.label_focused : ''}
-          ${labelClassName ? styles[labelClassName] : ''}
-          `}
+          className={[
+            styles.label,
+            isOpen || isSelected ? styles.label_focused : '',
+            customLabelClassName,
+          ]
+            .filter(Boolean)
+            .join(' ')}
+          style={customLabelStyle}
         >
           {label}
         </label>
@@ -76,15 +102,18 @@ const Select: React.FC<SelectProps> = ({
           setOpen={setOpen}
           isSelected={isSelected}
           selectedValue={selectedValue}
-          className={selectClassName && selectClassName}
+          customClassName={customSelectClassName}
+          customStyle={customSelectStyle}
         />
         {isOpen && (
           <OptionsList
             options={options}
             handleSelect={handleSelect}
             initialValue={initialValue}
-            className={listClassName && listClassName}
-            itemClassName={listItemClassName && listItemClassName}
+            customListClassName={customListClassName}
+            customListItemClassName={customListItemClassName}
+            customListStyle={customListStyle}
+            customListItemStyle={customListItemStyle}
           />
         )}
       </div>

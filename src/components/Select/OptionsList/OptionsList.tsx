@@ -8,32 +8,36 @@ interface Props {
   options: Option[];
   handleSelect: (selectedOption: Option) => void;
   initialValue: string;
-  className?: string;
-  itemClassName?: string;
+  customListClassName?: string;
+  customListItemClassName?: string;
+  customListStyle?: React.CSSProperties;
+  customListItemStyle?: React.CSSProperties;
 }
 
 function OptionsList({
   options,
   handleSelect,
   initialValue,
-  className,
-  itemClassName,
+  customListClassName,
+  customListItemClassName,
+  customListStyle,
+  customListItemStyle,
 }: Props) {
   return (
     <ul
-      className={`
-      ${styles.optionsList}
-      ${className ? styles[className] : ''}
-      `}
+      className={[styles.optionsList, customListClassName]
+        .filter(Boolean)
+        .join(' ')}
+      style={customListStyle}
       role="listbox"
       id="custom-select-list"
     >
       {options.map((option: Option) => (
         <li
-          className={`
-          ${styles.option}
-          ${itemClassName ? styles[itemClassName] : ''}
-          `}
+          className={[styles.option, customListItemClassName]
+            .filter(Boolean)
+            .join(' ')}
+          style={customListItemStyle}
           key={option.value}
           role="option"
           aria-selected={option.value === initialValue}

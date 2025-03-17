@@ -8,7 +8,8 @@ interface Props {
   setOpen: (isOpen: boolean) => void;
   isSelected: boolean;
   selectedValue: string;
-  className?: string;
+  customClassName?: string;
+  customStyle?: React.CSSProperties;
 }
 
 function CustomSelect({
@@ -16,16 +17,15 @@ function CustomSelect({
   setOpen,
   isSelected,
   selectedValue,
-  className,
+  customClassName,
+  customStyle,
 }: Props) {
   const [isIconRotate, setIconRotate] = useState<boolean>(false);
 
   return (
     <div
-      className={`
-      ${styles.select} 
-      ${className ? styles[className] : ''}
-      `}
+      className={[styles.select, customClassName].filter(Boolean).join(' ')}
+      style={customStyle}
       role="combobox"
       aria-haspopup="listbox"
       aria-expanded={isOpen}
@@ -36,10 +36,9 @@ function CustomSelect({
       <div className={styles.selected}>{isSelected ? selectedValue : ''}</div>
 
       <div
-        className={`
-        ${styles.icon}
-        ${isIconRotate ? styles.icon_rotate : ''}
-        `}
+        className={[styles.icon, isIconRotate ? styles.icon_rotate : '']
+          .filter(Boolean)
+          .join(' ')}
         onClick={() => setIconRotate(true)}
         onBlur={() => setIconRotate(false)}
         tabIndex={0}
