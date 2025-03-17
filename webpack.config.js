@@ -1,44 +1,45 @@
-import * as path from "path";
-import {fileURLToPath} from "url";
+import * as path from 'path';
+import { fileURLToPath } from 'url';
 
 export default () => {
-  const __filename = fileURLToPath(import.meta.url)
-  const __dirname = path.dirname(__filename)
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
 
   return {
-    entry: "./src/index.ts",
+    entry: './src/index.ts',
     output: {
-      path: path.resolve(__dirname, "dist"),
-      filename: "index.js",
+      path: path.resolve(__dirname, 'dist'),
+      filename: 'index.js',
       library: {
         name: 'CustomComponentsLib',
         type: 'umd',
       },
-      globalObject: "this",
+      globalObject: 'this',
       clean: true,
     },
     externals: {
-      react: "react",
+      react: 'react',
     },
     resolve: {
-      extensions: [".tsx", ".ts", ".js"],
+      extensions: ['.tsx', '.ts', '.js'],
       alias: {
-        '@': path.resolve(__dirname, "src"),
+        '@': path.resolve(__dirname, 'src'),
       },
     },
     module: {
       rules: [
         {
           test: /\.(ts|tsx)$/,
-          use: "ts-loader",
+          use: 'ts-loader',
           exclude: /node_modules/,
         },
         {
           test: /\.s[ac]ss$/i,
-          use: ["style-loader", "css-loader", "sass-loader"],
-        }
+          use: ['style-loader', 'css-loader', 'sass-loader'],
+        },
       ],
     },
-    mode: "development",
-  }
-}
+    mode: 'development',
+    devtool: 'source-map',
+  };
+};
