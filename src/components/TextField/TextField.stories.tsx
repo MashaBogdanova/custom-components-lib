@@ -23,6 +23,7 @@ export const Outlined: Story = {
   args: {
     variant: 'outlined',
     error: false,
+    placeholder: 'jkn;j',
   },
 };
 
