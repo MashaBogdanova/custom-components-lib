@@ -6,13 +6,26 @@ import * as styles from './Switch.module.scss';
 export interface SwitchProps {
   defaultChecked?: boolean;
   disabled?: boolean;
+  customClassName?: string;
+  customStyle?: React.CSSProperties;
   onChange?: (checked: boolean) => void;
 }
 
+export const DEFAULT_SWITCH_PROPS: SwitchProps = {
+  defaultChecked: false,
+  disabled: false,
+  customClassName: '',
+  customStyle: {},
+  // eslint-disable-next-line
+  onChange: (checked) => console.log(`Switch checked: ${checked}`),
+};
+
 const Switch = ({
-  defaultChecked = false,
-  disabled = false,
-  onChange,
+  defaultChecked = DEFAULT_SWITCH_PROPS.defaultChecked,
+  disabled = DEFAULT_SWITCH_PROPS.disabled,
+  customClassName = DEFAULT_SWITCH_PROPS.customClassName,
+  customStyle = DEFAULT_SWITCH_PROPS.customStyle,
+  onChange = DEFAULT_SWITCH_PROPS.onChange,
 }: SwitchProps) => {
   const [checked, setChecked] = useState<boolean>(defaultChecked);
 
@@ -25,9 +38,9 @@ const Switch = ({
 
   return (
     <label
-      className={`
-      ${styles.switch} 
-      ${disabled ? styles.disabled : ''}`}
+      className={[styles.switch, disabled ? styles.disabled : '']
+        .filter(Boolean)
+        .join(' ')}
     >
       <input
         className={styles.input}
@@ -37,10 +50,14 @@ const Switch = ({
         onChange={switchHandler}
       />
       <span
-        className={`
-        ${styles.slider}
-        ${checked ? styles.slider_checked : ''}
-        `}
+        className={[
+          styles.slider,
+          checked ? styles.slider_checked : '',
+          customClassName,
+        ]
+          .filter(Boolean)
+          .join(' ')}
+        style={customStyle}
       />
     </label>
   );
