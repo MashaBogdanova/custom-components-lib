@@ -55,7 +55,7 @@ describe('Select Component', () => {
 
   test('selects an option and calls onChange', () => {
     const handleChange = jest.fn();
-    render(<Select options={options} onChange={handleChange} />);
+    render(<Select options={options} onClick={handleChange} />);
 
     fireEvent.click(screen.getByRole('combobox'));
     fireEvent.click(screen.getByText('Option 2'));

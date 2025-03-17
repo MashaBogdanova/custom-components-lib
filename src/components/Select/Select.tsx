@@ -22,7 +22,7 @@ export interface SelectProps {
   customLabelClassName?: string;
   customListClassName?: string;
   customListItemClassName?: string;
-  onChange?: (value: Option) => void;
+  onClick?: (value: Option) => void;
 }
 
 export const defaultOptions: Option[] = [
@@ -44,7 +44,7 @@ export const DEFAULT_SELECT_PROPS: SelectProps = {
   customListClassName: '',
   customListItemClassName: '',
   // eslint-disable-next-line
-  onChange: (value) => console.log('Selected value', value),
+  onClick: (value) => console.log(`Selected value ${value.label}`),
 };
 
 const Select: React.FC<SelectProps> = ({
@@ -59,7 +59,7 @@ const Select: React.FC<SelectProps> = ({
   customLabelClassName = DEFAULT_SELECT_PROPS.customLabelClassName,
   customListClassName = DEFAULT_SELECT_PROPS.customListClassName,
   customListItemClassName = DEFAULT_SELECT_PROPS.customListItemClassName,
-  onChange,
+  onClick = DEFAULT_SELECT_PROPS.onClick,
 }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [isSelected, setSelected] = useState<boolean>(false);
@@ -68,7 +68,7 @@ const Select: React.FC<SelectProps> = ({
   const handleSelect = (selectedOption: Option) => {
     setSelectedValue(selectedOption.label);
 
-    if (onChange) onChange(selectedOption);
+    if (onClick) onClick(selectedOption);
     setOpen(false);
     setSelected(true);
   };
