@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
 
-import { capitalize } from '../utils/capitalize-string';
+import { capitalize } from '../../utils/capitalize-string';
 
 describe('capitalize', () => {
   it('should capitalize the first letter of a string', () => {

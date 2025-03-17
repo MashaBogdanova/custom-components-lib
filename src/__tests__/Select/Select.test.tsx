@@ -1,23 +1,26 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import * as React from 'react';
 
-import Select, { Option } from '../components/Select/Select';
+import Select, { Option } from '../../components/Select/Select';
 
-jest.mock('../components/Select/Select.module.scss', () => ({
+jest.mock('../../components/Select/Select.module.scss', () => ({
   container: 'container',
   label: 'label',
   label_focused: 'label_focused',
   selectWrapper: 'selectWrapper',
 }));
 
-jest.mock('../components/Select/CustomSelect/CustomSelect.module.scss', () => ({
-  select: 'select',
-  selected: 'selected',
-  icon: 'icon',
-  icon_rotate: 'icon_rotate',
-}));
+jest.mock(
+  '../../components/Select/CustomSelect/CustomSelect.module.scss',
+  () => ({
+    select: 'select',
+    selected: 'selected',
+    icon: 'icon',
+    icon_rotate: 'icon_rotate',
+  })
+);
 
-jest.mock('../components/Select/OptionsList/OptionList.module.scss', () => ({
+jest.mock('../../components/Select/OptionsList/OptionList.module.scss', () => ({
   optionsList: 'optionsList',
   option: 'option',
 }));

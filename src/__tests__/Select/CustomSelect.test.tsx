@@ -1,14 +1,17 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import * as React from 'react';
 
-import CustomSelect from '../components/Select/CustomSelect/CustomSelect';
+import CustomSelect from '../../components/Select/CustomSelect/CustomSelect';
 
-jest.mock('../components/Select/CustomSelect/CustomSelect.module.scss', () => ({
-  select: 'select',
-  selected: 'selected',
-  icon: 'icon',
-  icon_rotate: 'icon_rotate',
-}));
+jest.mock(
+  '../../components/Select/CustomSelect/CustomSelect.module.scss',
+  () => ({
+    select: 'select',
+    selected: 'selected',
+    icon: 'icon',
+    icon_rotate: 'icon_rotate',
+  })
+);
 
 describe('CustomSelect Component', () => {
   test('renders CustomSelect component', () => {

@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import * as React from 'react';
 
-import OptionsList from '../components/Select/OptionsList/OptionsList';
+import OptionsList from '../../components/Select/OptionsList/OptionsList';
 
-jest.mock('../components/Select/OptionsList/OptionList.module.scss', () => ({
+jest.mock('../../components/Select/OptionsList/OptionList.module.scss', () => ({
   optionsList: 'optionsList',
   option: 'option',
 }));
