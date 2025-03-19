@@ -1,6 +1,6 @@
 {
   "name": "@mashabogdanoff/custom-components-lib",
-  "version": "1.0.41",
+  "version": "1.0.43",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
@@ -65,6 +65,7 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "react-dom": "^19.0.0"
   }
 }
