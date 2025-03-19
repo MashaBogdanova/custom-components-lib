@@ -1,0 +1,25 @@
+@use '../../sass/abstract/constants' as constants;
+@use '../../sass/abstract/mixins' as mixins;
+
+.container {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+}
+
+.label {
+  padding: 4px;
+  z-index: 1;
+  background-color: constants.$white;
+  @include mixins.label(15px, 15px, 8px, -10px);
+
+  &_focused {
+  }
+}
+
+.selectWrapper {
+  position: relative;
+  width: 100%;
+}

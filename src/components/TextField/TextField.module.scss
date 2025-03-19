@@ -1,0 +1,127 @@
+@use '../../sass/abstract/constants' as constants;
+@use '../../sass/abstract/mixins' as mixins;
+
+.textfield {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  width: constants.$text-field-width;
+  height: constants.$text-field-height;
+
+  &:focus-within {
+    .label {
+      color: constants.$primary-color;
+    }
+  }
+
+  &.outlined {
+    .input {
+      border: 1px solid constants.$border-color;
+      border-radius: constants.$border-radius;
+    }
+
+    &:hover .input {
+      border-color: constants.$dark;
+    }
+
+    .input:focus {
+      border: 2px solid constants.$primary-color;
+    }
+  }
+
+  &.filled {
+    .input {
+      background-color: constants.$filled-bg;
+      border: none;
+      border-bottom: 1px solid constants.$border-color-dark;
+      border-radius: constants.$border-radius constants.$border-radius 0 0;
+    }
+
+    &:hover .input {
+      background-color: constants.$filled-hover-bg;
+      border-bottom: 1px solid constants.$dark;
+    }
+
+    .input:focus {
+      border-bottom: 2px solid constants.$primary-color;
+      background-color: constants.$filled-bg;
+    }
+
+    .input:focus .input:hover {
+      border-bottom: 2px solid constants.$primary-color;
+      background-color: constants.$filled-bg;
+    }
+  }
+
+  &.standard {
+    .input {
+      border: none;
+      border-bottom: 1px solid constants.$border-color;
+      border-radius: 0;
+    }
+
+    &:hover .input {
+      border-bottom: 2px solid constants.$dark;
+    }
+
+    .input:focus {
+      border-bottom: 2px solid constants.$primary-color;
+    }
+
+    &:focus-within .label {
+      color: constants.$primary-color;
+    }
+  }
+
+  &.error {
+    .input {
+      border-color: constants.$error-color;
+    }
+
+    .label {
+      color: constants.$error-color;
+    }
+
+    &.outlined {
+      .input:focus {
+        border-color: constants.$error-color;
+      }
+    }
+
+    &.filled {
+      .input:focus {
+        border-bottom-color: constants.$error-color;
+      }
+    }
+  }
+}
+
+.label {
+  @include mixins.label(15px, 20px, 8px, 4px);
+  &_focused {
+  }
+}
+
+.input {
+  display: block;
+  height: 100%;
+  padding: constants.$input-padding;
+
+  font-size: constants.$input-font-size;
+  font-weight: constants.$font-weight;
+
+  outline: none;
+
+  transition: constants.$transition;
+
+  &::placeholder {
+    color: constants.$border-color-dark;
+    opacity: 1;
+    transition: constants.$transition-opacity;
+  }
+
+  &:focus::placeholder {
+    opacity: 0;
+  }
+}

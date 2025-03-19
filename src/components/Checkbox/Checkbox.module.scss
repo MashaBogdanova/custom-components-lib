@@ -1,0 +1,91 @@
+@use '../../sass/abstract/constants' as constants;
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.input {
+  position: relative;
+
+  width: 20px;
+  height: 20px;
+  margin: 0 12px 0 0;
+
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: constants.$white;
+  border: 2px solid constants.$border-color-dark;
+  border-radius: constants.$border-radius;
+  cursor: pointer;
+
+  transition: constants.$transition;
+
+  &:checked {
+    background-color: constants.$primary-color;
+    border-color: constants.$primary-color;
+
+    &:after {
+      content: '';
+
+      position: absolute;
+      left: 5px;
+      top: 1px;
+
+      width: 5px;
+      height: 10px;
+
+      border: solid constants.$white;
+      border-width: 0 2px 2px 0;
+
+      transform: rotate(45deg);
+    }
+  }
+
+  &:disabled {
+    background-color: constants.$disabled-bg;
+    border-color: constants.$disabled-bg;
+    cursor: not-allowed;
+  }
+
+  &:disabled + .label {
+    cursor: not-allowed;
+  }
+
+  &:before {
+    content: '';
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    width: 0;
+    height: 0;
+
+    background: constants.$outlined-hover-bg;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translate(-50%, -50%);
+    transition: constants.$transition;
+  }
+
+  &:not(:disabled):hover:before {
+    width: 40px;
+    height: 40px;
+    opacity: 1;
+  }
+
+  &:active:before {
+    background: constants.$text-hover-bg;
+    width: 60px;
+    height: 60px;
+    opacity: 1;
+  }
+}
+
+.label {
+  cursor: pointer;
+}

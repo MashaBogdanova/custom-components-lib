@@ -1,0 +1,55 @@
+// Common styles
+$primary-color: #1976d2;
+$primary-hover: #115293;
+$primary-outline: #1976d280;
+$text-hover-bg: #1976d21a;
+$outlined-hover-bg: #1976d20a;
+$filled-bg: #0000000f;
+$filled-hover-bg: #00000015;
+$border-color: #0000003a;
+$border-color-dark: #0000007c;
+$shadow-color: #0000007c;
+$toggle-bg: #ccccccff;
+
+$error-color: #f44336;
+$disabled-bg: #e0e0e0;
+$disabled-text: #00000042;
+
+$white: #ffffff;
+$dark: #00000099;
+$black: #000000;
+
+$font-weight: 500;
+$border-radius: 4px;
+
+$transition: all 0.2s ease-in-out;
+$transition-toggle: all 0.4s ease-in-out;
+$transition-opacity: opacity 0.3s ease-in-out;
+
+// Button
+$button-padding: 10px 20px;
+$button-padding-small: 8px 14px;
+$button-padding-large: 12px 26px;
+
+$button-font-size: 14px;
+$button-font-size-small: 13px;
+$button-font-size-large: 15px;
+
+$ripple-color: #ffffff4d;
+$ripple-color-dark: #1976d280;
+$ripple-size: 100px;
+$ripple-scale: 2.5;
+
+$box-shadow-contained-default: 0px 2px 4px #00000019;
+$box-shadow-contained-hover: 0px 4px 8px #00000026;
+$box-shadow-contained-active: 0px 6px 12px #00000033;
+
+// TextField, Select
+$text-field-width: 222px;
+$text-field-height: 56px;
+
+$input-padding: 16.5px 14px 5px;
+$select-padding: 20px 0 20px 16px;
+
+$input-font-size: 16px;
+$label-font-size: 12px;
