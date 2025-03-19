@@ -1,7 +1,7 @@
 # Custom Components Lib
 
 **Author:** Maria Bogdanova  
-**GitHub Profile:** [Link to rprofile](https://github.com/MashaBogdanova)  
+**GitHub Profile:** [Link to profile](https://github.com/MashaBogdanova)  
 **Project GitHub Repository:** [Link to repository](https://github.com/MashaBogdanova/custom-components-lib)  
 **Task documentation:** [Link to task](https://drive.google.com/file/d/1C148FRnWfXVoRDslDWcYac3bEhebdIAV/view)  
 
@@ -13,30 +13,35 @@ similar to Material UI (MUI). Each component comes with a rich set of props and 
   - Multiple variants (contained, outlined, text)
   - Various sizes
   - Disabled state
+  - Custom styling
 
 - **TextField:**
   - Multiple visual styles (outlined, filled, standard)
   - Customizable input with label
   - Error handling
+  - Custom styling
 
 - **Checkbox:**
   - Supports checked, unchecked
   - Default check and disabled states
+  - Custom styling
 
 - **Switch:**
   - Modern toggle with smooth animations
   - Default check and disabled states
   - Easy form integration
+  - Custom styling
 
 - **Select:**
   - Versatile dropdown for single or multi-selection
-  - Custom styling
   - Extensive prop support for dynamic options
+  - Custom styling
 
 - **Modal:**
   - Configurable dialog with header, content, and actions
   - Backdrop support and built-in transitions
   - Designed for critical alerts and information
+  - Custom styling
 
 ---
 
@@ -135,3 +140,8 @@ Formats all JavaScript, TypeScript, SCSS, and HTML files in the src folder using
   Executes all test files in the project to ensure code functionality and correctness.
    ```bash
    npm run test
+    
+- **Publish the package**  
+  Builds the project and publishes the package to the npm registry with public access.
+   ```bash
+   npm run publish-package
