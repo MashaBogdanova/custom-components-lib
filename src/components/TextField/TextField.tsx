@@ -29,8 +29,6 @@ export const DEFAULT_TEXT_FIELD_PROPS: TextFieldProps = {
   customTextFieldStyle: {},
   customInputStyle: {},
   customLabelStyle: {},
-  // eslint-disable-next-line
-  onChange: (value) => console.log(`Current value: ${value}`),
 };
 
 const TextField: React.FC<TextFieldProps> = ({
@@ -44,14 +42,20 @@ const TextField: React.FC<TextFieldProps> = ({
   customTextFieldStyle = DEFAULT_TEXT_FIELD_PROPS.customTextFieldStyle,
   customInputStyle = DEFAULT_TEXT_FIELD_PROPS.customInputStyle,
   customLabelStyle = DEFAULT_TEXT_FIELD_PROPS.customLabelStyle,
-  onChange = DEFAULT_TEXT_FIELD_PROPS.onChange,
+  onChange,
 }) => {
   const [isFocused, setFocused] = useState<boolean>(false);
   const [value, setValue] = useState<string>('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
-    onChange(e.target.value);
+
+    if (onChange) {
+      onChange(e.target.value);
+    } else {
+      // eslint-disable-next-line
+      console.log(`Current value: ${e.target.value}`);
+    }
   };
 
   return (

@@ -17,8 +17,6 @@ export const DEFAULT_SWITCH_PROPS: SwitchProps = {
   disabled: false,
   customClassName: '',
   customStyle: {},
-  // eslint-disable-next-line
-  onChange: (checked) => console.log(`Switch checked: ${checked}`),
 };
 
 const Switch = ({
@@ -26,7 +24,7 @@ const Switch = ({
   disabled = DEFAULT_SWITCH_PROPS.disabled,
   customClassName = DEFAULT_SWITCH_PROPS.customClassName,
   customStyle = DEFAULT_SWITCH_PROPS.customStyle,
-  onChange = DEFAULT_SWITCH_PROPS.onChange,
+  onChange,
 }: SwitchProps) => {
   const [checked, setChecked] = useState<boolean>(defaultChecked);
 
@@ -34,7 +32,12 @@ const Switch = ({
     if (disabled) return;
     setChecked((prev) => !prev);
 
-    if (onChange) onChange(!checked);
+    if (onChange) {
+      onChange(!checked);
+    } else {
+      // eslint-disable-next-line
+      console.log(`Switch checked: ${!checked}`);
+    }
   };
 
   return (

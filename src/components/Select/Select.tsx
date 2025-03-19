@@ -44,8 +44,6 @@ export const DEFAULT_SELECT_PROPS: SelectProps = {
   customLabelClassName: '',
   customListClassName: '',
   customListItemClassName: '',
-  // eslint-disable-next-line
-  onClick: (value) => console.log(`Selected value ${value.label}`),
 };
 
 const Select: React.FC<SelectProps> = ({
@@ -60,7 +58,7 @@ const Select: React.FC<SelectProps> = ({
   customLabelClassName = DEFAULT_SELECT_PROPS.customLabelClassName,
   customListClassName = DEFAULT_SELECT_PROPS.customListClassName,
   customListItemClassName = DEFAULT_SELECT_PROPS.customListItemClassName,
-  onClick = DEFAULT_SELECT_PROPS.onClick,
+  onClick,
 }) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [isSelected, setSelected] = useState<boolean>(false);
@@ -69,7 +67,13 @@ const Select: React.FC<SelectProps> = ({
   const handleSelect = (selectedOption: Option) => {
     setSelectedValue(selectedOption.label);
 
-    if (onClick) onClick(selectedOption);
+    if (onClick) {
+      onClick(selectedOption);
+    } else {
+      // eslint-disable-next-line
+      console.log(`Selected value ${selectedOption.label}`);
+    }
+
     setOpen(false);
     setSelected(true);
   };

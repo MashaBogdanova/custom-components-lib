@@ -25,8 +25,6 @@ export const DEFAULT_BUTTON_PROPS: ButtonProps = {
   type: 'button' as const,
   customStyle: {},
   customClassName: '',
-  // eslint-disable-next-line
-  onClick: () => console.log('Button clicked'),
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -38,14 +36,20 @@ const Button: React.FC<ButtonProps> = ({
   type = DEFAULT_BUTTON_PROPS.type,
   customStyle = DEFAULT_BUTTON_PROPS.customStyle,
   customClassName = DEFAULT_BUTTON_PROPS.customClassName,
-  onClick = DEFAULT_BUTTON_PROPS.onClick,
+  onClick,
 }: ButtonProps) => {
   const [ripple, setRipple] = useState(false);
   const handleClick = (): void => {
     if (disabled) return;
     setRipple(true);
 
-    if (onClick) onClick();
+    if (onClick) {
+      onClick();
+    } else {
+      // eslint-disable-next-line
+      console.log('Button clicked');
+    }
+
     setTimeout(() => setRipple(false), 600);
   };
 

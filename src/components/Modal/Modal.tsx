@@ -18,8 +18,6 @@ export const DEFAULT_MODAL_PROPS: ModalProps = {
   children: <h1>Your modal</h1>,
   customStyle: {},
   customClassName: '',
-  // eslint-disable-next-line
-  onClose: () => console.log('Modal closed'),
 };
 
 const Modal = ({
@@ -27,7 +25,7 @@ const Modal = ({
   children = DEFAULT_MODAL_PROPS.children,
   customStyle = DEFAULT_MODAL_PROPS.customStyle,
   customClassName = DEFAULT_MODAL_PROPS.customClassName,
-  onClose = DEFAULT_MODAL_PROPS.onClose,
+  onClose,
 }: ModalProps) => {
   const [modalRoot, setModalRoot] = useState(null);
 
@@ -44,8 +42,17 @@ const Modal = ({
 
   if (!isOpen || !modalRoot) return null;
 
+  const handleClose = () => {
+    if (onClose) {
+      onClose();
+    } else {
+      // eslint-disable-next-line
+      console.log('Modal closed');
+    }
+  };
+
   return createPortal(
-    <div className={styles.modal} onClick={onClose} role="dialog">
+    <div className={styles.modal} onClick={handleClose} role="dialog">
       <div
         className={clsx(styles.content, customClassName)}
         style={customStyle}

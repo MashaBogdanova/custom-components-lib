@@ -23,8 +23,6 @@ export const DEFAULT_CHECKBOX_PROPS: CheckboxProps = {
   customInputClassName: '',
   customLabelStyle: {},
   customLabelClassName: '',
-  // eslint-disable-next-line
-  onChange: (checked) => console.log(`Checkbox checked: ${checked}`),
 };
 
 function Checkbox({
@@ -35,7 +33,7 @@ function Checkbox({
   customInputClassName = DEFAULT_CHECKBOX_PROPS.customInputClassName,
   customLabelStyle = DEFAULT_CHECKBOX_PROPS.customLabelStyle,
   customLabelClassName = DEFAULT_CHECKBOX_PROPS.customLabelClassName,
-  onChange = DEFAULT_CHECKBOX_PROPS.onChange,
+  onChange,
 }: CheckboxProps) {
   const [isChecked, setIsChecked] = useState(checked);
 
@@ -44,7 +42,12 @@ function Checkbox({
 
     setIsChecked((prev) => !prev);
 
-    if (onChange) onChange(isChecked);
+    if (onChange) {
+      onChange(isChecked);
+    } else {
+      // eslint-disable-next-line
+      console.log(`Checkbox checked: ${checked}`);
+    }
   };
 
   return (
