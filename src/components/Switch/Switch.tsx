@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import { useState } from 'react';
 
@@ -37,11 +38,7 @@ const Switch = ({
   };
 
   return (
-    <label
-      className={[styles.switch, disabled ? styles.disabled : '']
-        .filter(Boolean)
-        .join(' ')}
-    >
+    <label className={clsx(styles.switch, { [styles.disabled]: disabled })}>
       <input
         className={styles.input}
         type="checkbox"
@@ -50,13 +47,11 @@ const Switch = ({
         onChange={switchHandler}
       />
       <span
-        className={[
+        className={clsx(
           styles.slider,
-          checked ? styles.slider_checked : '',
-          customClassName,
-        ]
-          .filter(Boolean)
-          .join(' ')}
+          { [styles.slider_checked]: checked },
+          customClassName
+        )}
         style={customStyle}
       />
     </label>

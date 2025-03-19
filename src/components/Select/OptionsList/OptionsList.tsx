@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import * as React from 'react';
 
 import { Option } from '@/components/Select/Select';
@@ -25,18 +26,14 @@ function OptionsList({
 }: Props) {
   return (
     <ul
-      className={[styles.optionsList, customListClassName]
-        .filter(Boolean)
-        .join(' ')}
+      className={clsx(styles.optionsList, customListClassName)}
       style={customListStyle}
       role="listbox"
       id="custom-select-list"
     >
       {options.map((option: Option) => (
         <li
-          className={[styles.option, customListItemClassName]
-            .filter(Boolean)
-            .join(' ')}
+          className={clsx(styles.option, customListItemClassName)}
           style={customListItemStyle}
           key={option.value}
           role="option"

@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import { useState } from 'react';
 
@@ -50,16 +51,14 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={[
+      className={clsx(
         styles.button,
         styles[variant],
         styles[size],
         customClassName,
-        ripple && !disabled ? styles.ripple : '',
-        disabled ? styles.disabled : '',
-      ]
-        .filter(Boolean)
-        .join(' ')}
+        { [styles.ripple]: ripple && !disabled },
+        { [styles.disabled]: disabled }
+      )}
       style={customStyle}
       disabled={disabled}
       type={type}

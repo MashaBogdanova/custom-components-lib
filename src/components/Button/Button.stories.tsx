@@ -38,6 +38,7 @@ export const Contained: Story = {
     value: 'Contained',
     variant: 'contained',
     size: 'medium',
+    customClassName: '',
   },
 };
 

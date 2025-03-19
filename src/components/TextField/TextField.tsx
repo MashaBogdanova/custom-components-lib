@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import { useState } from 'react';
 
@@ -55,34 +56,28 @@ const TextField: React.FC<TextFieldProps> = ({
 
   return (
     <div
-      className={[
+      className={clsx(
         styles.textfield,
         styles[variant],
-        error ? styles.error : '',
-        customTextFieldClassName,
-      ]
-        .filter(Boolean)
-        .join(' ')}
+        { [styles.error]: error },
+        customTextFieldClassName
+      )}
       style={customTextFieldStyle}
       data-testid="textfield-container"
     >
       <label
-        className={[
+        className={clsx(
           styles.label,
-          isFocused || value ? styles.label_focused : '',
-          customLabelClassName,
-        ]
-          .filter(Boolean)
-          .join(' ')}
+          { [styles.label_focused]: isFocused || value },
+          customLabelClassName
+        )}
         style={customLabelStyle}
         data-testid="textfield-label"
       >
         {label ? label : capitalize(variant)}
       </label>
       <input
-        className={[styles.input, customInputClassName]
-          .filter(Boolean)
-          .join(' ')}
+        className={clsx(styles.input, customInputClassName)}
         style={customInputStyle}
         placeholder={isFocused ? placeholder : ''}
         value={value}

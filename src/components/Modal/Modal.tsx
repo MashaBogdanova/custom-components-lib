@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import { ReactNode, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -46,7 +47,7 @@ const Modal = ({
   return createPortal(
     <div className={styles.modal} onClick={onClose} role="dialog">
       <div
-        className={[styles.content, customClassName].filter(Boolean).join(' ')}
+        className={clsx(styles.content, customClassName)}
         style={customStyle}
         onClick={(e) => e.stopPropagation()}
         data-testid="content"

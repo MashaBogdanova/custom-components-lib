@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import { useState } from 'react';
 
@@ -83,13 +84,11 @@ const Select: React.FC<SelectProps> = ({
     <div className={styles.container} onBlur={handleBlur}>
       {label && (
         <label
-          className={[
+          className={clsx(
             styles.label,
-            isOpen || isSelected ? styles.label_focused : '',
-            customLabelClassName,
-          ]
-            .filter(Boolean)
-            .join(' ')}
+            { [styles.label_focused]: isOpen || isSelected },
+            customLabelClassName
+          )}
           style={customLabelStyle}
         >
           {label}

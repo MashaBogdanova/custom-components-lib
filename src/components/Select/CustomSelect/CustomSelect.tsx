@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import { useState } from 'react';
 
@@ -24,7 +25,7 @@ function CustomSelect({
 
   return (
     <div
-      className={[styles.select, customClassName].filter(Boolean).join(' ')}
+      className={clsx(styles.select, customClassName)}
       style={customStyle}
       role="combobox"
       aria-haspopup="listbox"
@@ -36,9 +37,7 @@ function CustomSelect({
       <div className={styles.selected}>{isSelected ? selectedValue : ''}</div>
 
       <div
-        className={[styles.icon, isIconRotate ? styles.icon_rotate : '']
-          .filter(Boolean)
-          .join(' ')}
+        className={clsx(styles.icon, { [styles.icon_rotate]: isIconRotate })}
         onClick={() => setIconRotate(true)}
         onBlur={() => setIconRotate(false)}
         tabIndex={0}

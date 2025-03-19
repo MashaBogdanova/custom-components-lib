@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import * as React from 'react';
 import { useState } from 'react';
 
@@ -49,9 +50,7 @@ function Checkbox({
   return (
     <label className={styles.checkbox}>
       <input
-        className={[styles.input, customInputClassName]
-          .filter(Boolean)
-          .join(' ')}
+        className={clsx(styles.input, customInputClassName)}
         style={customInputStyle}
         type="checkbox"
         disabled={disabled}
@@ -60,9 +59,7 @@ function Checkbox({
       />
       {label && (
         <span
-          className={[styles.label, customLabelClassName]
-            .filter(Boolean)
-            .join(' ')}
+          className={clsx(styles.label, customLabelClassName)}
           style={customLabelStyle}
         >
           {label}
